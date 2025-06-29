@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cooking App - Recettes de Crêpes</title>
+  <link rel="stylesheet" href="./styles/main.css">
+</head>
+<body>
+  <div id="app">
+    <!-- Header avec sélecteur de langue -->
+    <header class="app-header">
+      <h1 class="app-title">🥞 Cooking App</h1>
+      <div class="language-switcher">
+        <button id="lang-fr" class="lang-btn active" data-lang="fr">FR</button>
+        <button id="lang-th" class="lang-btn" data-lang="th">TH</button>
+      </div>
+    </header>
+
+    <!-- Container principal des slots -->
+    <main class="slots-container" id="slots-container">
+      <!-- Premier slot vide -->
+      <div class="slot empty-slot" id="slot-0">
+        <div class="slot-content">
+          <div class="add-recipe-btn">
+            <span class="plus-icon">+</span>
+            <p class="add-text" data-i18n="add-recipe">Ajouter une recette</p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Bouton pour ajouter un nouveau slot (caché au début) -->
+    <button id="add-slot-btn" class="add-slot-btn hidden">
+      <span>+</span>
+    </button>
+
+    <!-- Modale de sélection de recette -->
+    <div id="recipe-modal" class="modal hidden">
+      <div class="modal-backdrop"></div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 data-i18n="select-recipe">Sélectionner la recette</h2>
+        </div>
+        <div class="recipe-wheel">
+          <div class="wheel-container">
+            <div class="recipe-option" data-recipe="crepe-classique">
+              <span data-i18n="crepe-classique-title">Crêpe classique</span>
+            </div>
+            <div class="recipe-option" data-recipe="crepe-sucree">
+              <span data-i18n="crepe-sucree-title">Crêpe sucrée</span>
+            </div>
+            <div class="recipe-option" data-recipe="crepe-salee">
+              <span data-i18n="crepe-salee-title">Crêpe salée</span>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button id="select-recipe-btn" class="btn btn-primary" data-i18n="choose">Choisir</button>
+          <button id="cancel-recipe-btn" class="btn btn-secondary" data-i18n="cancel">Annuler</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Audio pour les notifications -->
+    <audio id="timer-audio" preload="auto">
+      <source src="../public/sounds/timer-end.mp3" type="audio/mpeg">
+    </audio>
+  </div>
+
+  <script type="module" src="./main.ts"></script>
+</body>
+</html> 

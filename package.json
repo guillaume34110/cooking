@@ -1,0 +1,23 @@
+{
+  "name": "cooking-app",
+  "version": "1.0.0",
+  "description": "Application de recettes mobile-first avec TypeScript Vanilla et Capacitor",
+  "main": "dist/index.html",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "cap:add": "npx cap add android",
+    "cap:sync": "npx cap sync",
+    "cap:open": "npx cap open android",
+    "cap:run": "npm run build && npx cap sync && npx cap run android"
+  },
+  "devDependencies": {
+    "@capacitor/android": "^5.5.1",
+    "@capacitor/cli": "^5.5.1",
+    "@capacitor/core": "^5.5.1",
+    "typescript": "^5.2.2",
+    "vite": "^5.0.0"
+  },
+  "type": "module"
+} 
