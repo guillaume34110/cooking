@@ -1,0 +1,30 @@
+{
+  "name": "cooking-app",
+  "version": "1.0.0",
+  "description": "Offline-first cooking recipe app",
+  "main": "public/dist/main.js",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "dev:web": "concurrently \"npm:watch\" \"live-server public\"",
+    "dev:android": "concurrently \"npm:watch\" \"npx cap run android --livereload\"",
+    "start": "npm run build && npx cap run android"
+  },
+  "keywords": [
+    "typescript",
+    "vanilla",
+    "capacitor"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@capacitor/android": "^6.1.0",
+    "@capacitor/core": "^6.1.0"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^6.1.0",
+    "concurrently": "^9.2.0",
+    "live-server": "^1.2.2",
+    "typescript": "^5.4.5"
+  }
+}

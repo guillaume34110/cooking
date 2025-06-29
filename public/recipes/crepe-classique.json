@@ -1,0 +1,54 @@
+{
+  "id": "crepe-classique",
+  "title": {
+    "fr": "Crêpes classiques",
+    "th": "เครปคลาสสิก"
+  },
+  "description": {
+    "fr": "Une recette simple et rapide pour de délicieuses crêpes.",
+    "th": "สูตรง่ายๆและรวดเร็วสำหรับเครปแสนอร่อย"
+  },
+  "video": "assets/videos/crepe-intro.mp4",
+  "steps": [
+    {
+      "text": {
+        "fr": "Dans un saladier, versez la farine et formez un puits.",
+        "th": "เทแป้งลงในชามสลัดแล้วทำบ่อตรงกลาง"
+      },
+      "duration": 15,
+      "video": "assets/videos/crepe-step1.mp4"
+    },
+    {
+      "text": {
+        "fr": "Ajoutez les oeufs, le sucre, l'huile et le beurre fondu.",
+        "th": "ใส่ไข่ น้ำตาล น้ำมัน และเนยละลาย"
+      },
+      "duration": 20,
+      "video": "assets/videos/crepe-step2.mp4"
+    },
+    {
+      "text": {
+        "fr": "Mélangez doucement au fouet en ajoutant le lait petit à petit.",
+        "th": "ค่อยๆ ตีด้วยตะกร้อ ขณะที่ค่อยๆ เติมนม"
+      },
+      "duration": 45,
+      "video": "assets/videos/crepe-step3.mp4"
+    },
+    {
+      "text": {
+        "fr": "Laissez reposer la pâte pendant 30 minutes.",
+        "th": "พักแป้งไว้ 30 นาที"
+      },
+      "duration": 30,
+      "video": "assets/videos/crepe-step4.mp4"
+    },
+    {
+      "text": {
+        "fr": "Faites cuire vos crêpes dans une poêle chaude et huilée.",
+        "th": "ทอดเครปของคุณในกระทะที่ร้อนและทาน้ำมัน"
+      },
+      "duration": 60,
+      "video": "assets/videos/crepe-step5.mp4"
+    }
+  ]
+} 
