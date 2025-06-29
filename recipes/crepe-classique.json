@@ -1,0 +1,23 @@
+{
+  "id": "crepe-classique",
+  "title": { "fr": "Crêpe classique", "th": "เครปคลาสสิก" },
+  "description": { "fr": "Une délicieuse crêpe traditionnelle.", "th": "เครปสูตรดั้งเดิมแสนอร่อย" },
+  "video": "videos/crepe.mp4",
+  "steps": [
+    {
+      "text": { "fr": "Mélanger la farine et les œufs.", "th": "ผสมแป้งกับไข่" },
+      "duration": 60,
+      "video": "videos/step1.mp4"
+    },
+    {
+      "text": { "fr": "Ajouter le lait progressivement.", "th": "ค่อยๆ เติมนม" },
+      "duration": 45,
+      "video": "videos/step2.mp4"
+    },
+    {
+      "text": { "fr": "Cuire la crêpe dans la poêle.", "th": "ทอดเครปในกระทะ" },
+      "duration": 90,
+      "video": "videos/step3.mp4"
+    }
+  ]
+} 
