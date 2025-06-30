@@ -6,7 +6,7 @@ export default defineConfig({
   publicDir: '../public',
   base: process.env.NODE_ENV === 'production' ? '/cooking/' : '/',
   build: {
-    outDir: '../dist',
+    outDir: '../docs',
     emptyOutDir: true,
     rollupOptions: {
       input: {
