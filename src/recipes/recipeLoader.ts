@@ -1,4 +1,5 @@
 import { getLanguage } from '../state/appState.js';
+import { getImagePath, getVideoPath } from '../core/assets.js';
 
 export type RecipeStep = {
   text: {
@@ -61,8 +62,8 @@ const recipes: Recipe[] = [
         'น้ำมันสำหรับทอด'
       ]
     },
-    image: '/assets/images/ingredientpatecrepe.png',
-    video: '/videos/crepe-classique.mp4',
+    image: getImagePath('ingredientpatecrepe.png'),
+    video: getVideoPath('crepe-classique.mp4'),
     steps: [
       {
         text: {
@@ -72,7 +73,7 @@ const recipes: Recipe[] = [
         duration: 10,
                   media: {
             type: 'image',
-            url: '/assets/images/melangemixeur.png'
+            url: getImagePath('melangemixeur.png')
           }
       },
       {
@@ -83,7 +84,7 @@ const recipes: Recipe[] = [
         duration: 40,
         media: {
           type: 'image',
-          url: '/assets/images/mixermixin.webp'
+          url: getImagePath('mixermixin.webp')
         }
       },
       {
@@ -94,7 +95,7 @@ const recipes: Recipe[] = [
         duration: 60,
         media: {
           type: 'image',
-          url: '/assets/images/crepeierchaude.png'
+          url: getImagePath('crepeierchaude.png')
         }
       },
       {
@@ -105,7 +106,7 @@ const recipes: Recipe[] = [
         duration: 45,
         media: {
           type: 'image',
-          url: '/assets/images/crepiereetalage.png'
+          url: getImagePath('crepiereetalage.png')
         }
       },
       {
@@ -116,7 +117,7 @@ const recipes: Recipe[] = [
         duration: 120,
         media: {
           type: 'image',
-          url: '/assets/images/cuisson.png'
+          url: getImagePath('cuisson.png')
         }
       },
       {
@@ -127,7 +128,7 @@ const recipes: Recipe[] = [
         duration: 60,
         media: {
           type: 'image',
-          url: '/assets/images/cuisson.png'
+          url: getImagePath('cuisson.png')
         }
       }
     ]
@@ -165,8 +166,8 @@ const recipes: Recipe[] = [
         "ผงสี 3 กรัม (ปาปริกา ชาเขียว ถ่านไม้ – ตามต้องการ)"
       ]
     },
-    image: "/assets/images/barsoap.png",
-    video: "/assets/videos/savon-intro.mp4",
+    image: getImagePath("barsoap.png"),
+    video: getVideoPath("savon-intro.mp4"),
     steps: [
       {
         text: {
@@ -176,7 +177,7 @@ const recipes: Recipe[] = [
         duration: 60,
         media: {
           type: "image",
-          url: "/assets/images/huilesinbowl.png"
+          url: getImagePath("huilesinbowl.png")
         }
       },
       {
@@ -187,7 +188,7 @@ const recipes: Recipe[] = [
         duration: 120,
         media: {
           type: "image",
-          url: "/assets/images/soudemix.png"
+          url: getImagePath("soudemix.png")
         }
       },
       {
@@ -198,7 +199,7 @@ const recipes: Recipe[] = [
         duration: 90,
         media: {
           type: "image",
-          url: "/assets/images/tracemix.png"
+          url: getImagePath("tracemix.png")
         }
       },
       {
@@ -209,7 +210,7 @@ const recipes: Recipe[] = [
         duration: 600,
         media: {
           type: "image",
-          url: "/assets/images/cooldown.png"
+          url: getImagePath("cooldown.png")
         }
       },
       {
@@ -220,7 +221,7 @@ const recipes: Recipe[] = [
         duration: 30,
         media: {
           type: "image",
-          url: "/assets/images/mixsoap.png"
+          url: getImagePath("mixsoap.png")
         }
       },
       {
@@ -231,7 +232,7 @@ const recipes: Recipe[] = [
         duration: 60,
         media: {
           type: "image",
-          url: "/assets/images/finalmix.png"
+          url: getImagePath("finalmix.png")
         }
       },
       {
@@ -242,7 +243,7 @@ const recipes: Recipe[] = [
         duration: 30,
         media: {
           type: "image",
-          url: "/assets/images/moulesavon.png"
+          url: getImagePath("moulesavon.png")
         }
       },
       {
@@ -253,7 +254,7 @@ const recipes: Recipe[] = [
         duration: 60,
         media: {
           type: "image",
-          url: "/assets/images/nettoyagesavon.png"
+          url: getImagePath("nettoyagesavon.png")
         }
       }
     ]
