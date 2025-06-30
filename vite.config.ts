@@ -4,6 +4,7 @@ import { resolve } from 'path';
 export default defineConfig({
   root: 'src',
   publicDir: '../public',
+  base: process.env.NODE_ENV === 'production' ? '/cooking/' : '/',
   build: {
     outDir: '../dist',
     emptyOutDir: true,

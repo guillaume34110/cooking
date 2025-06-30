@@ -1,117 +1,124 @@
-# 🥞 Cooking App - Application de Recettes Mobile
+# 🥞 Cooking App
 
-Application web mobile-first de gestion de recettes de cuisine, inspirée du jeu de cuisine Nintendo DS. Développée en **TypeScript Vanilla** sans framework, avec **Capacitor** pour le packaging Android.
+Application de recettes mobile-first avec TypeScript Vanilla et Capacitor, inspirée des jeux Nintendo DS.
 
-## 🎯 Fonctionnalités
+## 🚀 Démo en ligne
 
-- **Slots de crêpières** : Interface avec slots multiples pour gérer plusieurs recettes simultanément
-- **Recettes interactives** : Navigation étape par étape avec timers automatiques
-- **Multilingue** : Support français et thaï avec chargement dynamique
-- **Vidéos intégrées** : Chaque étape avec sa vidéo explicative en auto-loop
-- **Timers visuels** : Barre de progression et notifications sonores
-- **Offline first** : Fonctionne sans connexion internet
-- **Mobile optimisé** : Interface responsive et tactile
+L'application est déployée automatiquement sur GitHub Pages : [https://guillaumegaillard.github.io/cooking/](https://guillaumegaillard.github.io/cooking/)
 
-## 🗂️ Architecture
+## ✨ Fonctionnalités
+
+- **Interface mobile-first** inspirée des jeux Nintendo DS
+- **Support multilingue** (Français/Thaï) avec alphabet authentique
+- **Système de slots** pour gérer plusieurs recettes en parallèle
+- **Navigation par flèches** élégante avec animations
+- **Support médias hybride** (images et vidéos) pour chaque étape
+- **Étape ingrédients** avant cuisson avec image dédiée
+- **Timers avancés** avec indicateurs visuels et notifications audio
+- **Architecture modulaire** TypeScript Vanilla (sans framework)
+
+## 🏗️ Architecture
 
 ```
 src/
-├── core/           # Logique métier pure
-│   ├── app.ts      # Initialisation de l'application
-│   ├── runner.ts   # Gestion des recettes et timers
-│   ├── translations.ts # Système multilingue
-│   └── audio.ts    # Gestion notifications sonores
-├── state/          # Gestion de l'état global
-│   └── appState.ts # État des slots et données
-├── ui/             # Interface utilisateur
-│   ├── render.ts   # Rendu HTML et DOM
-│   ├── events.ts   # Gestion événements utilisateur
-│   └── styles/
-│       └── main.css # Styles theme crêperie
-├── recipes/        # Données des recettes
-│   └── recipeLoader.ts # Chargement et localisation
-└── main.ts         # Point d'entrée
+├── core/          # Logique métier (app, audio, runner, translations)
+├── state/         # Gestion d'état global
+├── ui/            # Interface utilisateur (render, events)  
+├── recipes/       # Chargeur de recettes et types
+└── styles/        # CSS modulaire par composant
 ```
 
-## 🚀 Installation et Utilisation
+## 🛠️ Développement
+
+### Installation
+
+```bash
+npm install
+```
 
 ### Développement local
 
 ```bash
-# Installation des dépendances
-npm install
-
-# Serveur de développement
 npm run dev
+```
 
-# Build de production
+L'application sera disponible sur `http://localhost:3000`
+
+### Build de production
+
+```bash
 npm run build
 ```
 
-### Package Android avec Capacitor
+### Build pour GitHub Pages
 
 ```bash
-# Ajouter la plateforme Android
+npm run build:gh
+```
+
+## 📱 Déploiement mobile (Android)
+
+### Première installation Capacitor
+
+```bash
 npm run cap:add
+```
 
-# Synchroniser les fichiers
+### Synchronisation et ouverture dans Android Studio
+
+```bash
 npm run cap:sync
-
-# Ouvrir Android Studio
 npm run cap:open
+```
 
-# Build et run sur device
+### Build et run Android
+
+```bash
 npm run cap:run
 ```
 
-## 📱 Utilisation
+## 🚀 Déploiement GitHub Pages
 
-1. **Démarrage** : L'app affiche une crêpière vide avec bouton `+`
-2. **Sélection** : Clic sur `+` ouvre la modale de sélection de recette
-3. **Navigation** : Une fois la recette choisie, navigation étape par étape
-4. **Timers** : Chaque étape a son timer avec progression visuelle
-5. **Auto-flow** : Les timers enchaînent automatiquement les étapes
-6. **Multi-slots** : Possibilité d'ajouter plusieurs crêpières simultanées
+### Automatique (recommandé)
 
-## 🎨 Thème Visuel
+Le déploiement se fait automatiquement via GitHub Actions à chaque push sur `main`.
 
-- **Couleurs** : Palette beige/brun/crème inspirée des crêperies traditionnelles
-- **Typography** : Lisible et conviviale
-- **Animations** : Transitions fluides et feedback visuel
-- **Responsive** : Optimisé mobile-first
+### Manuel
 
-## 🌐 Internationalisation
+```bash
+npm run deploy:gh
+```
 
-- **Français** (fr) : Langue par défaut
-- **Thaï** (th) : Traduction complète
-- **Extensible** : Architecture prête pour d'autres langues
+## 🎮 Utilisation
 
-## 📋 Contraintes Techniques
+1. **Ajouter une recette** : Cliquer sur le `+` dans un slot vide
+2. **Sélectionner une recette** : Choisir dans la popup (génération dynamique)
+3. **Voir les ingrédients** : L'étape ingrédients s'affiche avec image
+4. **Commencer la cuisine** : Cliquer sur "Commencer la cuisine"
+5. **Navigation** : Utiliser les flèches `←` `→` pour naviguer
+6. **Timers** : Lancer/mettre en pause avec les boutons de contrôle
+7. **Langue** : Basculer entre FR et ไทย dans le header
 
-- ✅ **Pas de frameworks** : Vanilla TypeScript uniquement
-- ✅ **Pas de classes** : Architecture fonctionnelle pure
-- ✅ **Fonctions courtes** : Max 5 lignes, nommage explicite
-- ✅ **Contextes séparés** : Organisation par domaine métier
-- ✅ **ES Modules** : Import/export modernes uniquement
+## 🔧 Technologies
 
-## 🎯 Prochaines Étapes
+- **TypeScript Vanilla** (aucun framework)
+- **Vite** (build tool et dev server)
+- **Capacitor** (déploiement mobile)
+- **CSS modulaire** (architecture par composants)
+- **GitHub Pages** (déploiement web)
+- **GitHub Actions** (CI/CD automatique)
 
-1. **Assets** : Remplacer les placeholders par de vraies vidéos et sons
-2. **Recettes** : Ajouter plus de recettes variées
-3. **Fonctionnalités** : 
-   - Sauvegarde de progression
-   - Mode hors-ligne complet
-   - Notifications push
-   - Partage de recettes
+## 📝 Recettes disponibles
 
-## 🛠️ Technologies
+- **Crêpe classique** 🥞 (images uniquement)
+- **Savon en barre classique** 🧼 (saponification à froid)
 
-- **TypeScript** : Typage strict et moderne
-- **Vite** : Build tool rapide et moderne  
-- **Capacitor** : Package natif cross-platform
-- **CSS** : Variables CSS et animations pures
-- **ES2020** : Syntaxe JavaScript moderne
+## 🌍 Support multilingue
+
+L'application supporte nativement :
+- **Français** (FR)
+- **Thaïlandais** (ไทย) avec alphabet authentique
 
 ## 📄 Licence
 
-MIT - Libre d'utilisation et de modification 
+MIT License 
