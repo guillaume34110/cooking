@@ -1,0 +1,43 @@
+/* Variables CSS pour le thème crêperie */
+:root {
+  /* Couleurs principales */
+  --color-primary: #D4AF37; /* Or/brun doré */
+  --color-secondary: #8B4513; /* Brun foncé */
+  --color-background: #F5E6D3; /* Beige crème */
+  --color-surface: #FFF8DC; /* Crème claire */
+  --color-text: #3C2415; /* Brun très foncé */
+  --color-accent: #CD853F; /* Brun moyen */
+  
+  /* Couleurs d'état */
+  --color-success: #28a745;
+  --color-warning: #ffc107;
+  --color-danger: #dc3545;
+  
+  /* Espacements */
+  --spacing-xxs: 0.25rem;
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+  
+  /* Rayons de bordure */
+  --border-radius: 12px;
+  --border-radius-sm: 8px;
+  --border-radius-lg: 16px;
+  
+  /* Ombres */
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  --shadow-lg: 0 8px 20px rgba(0, 0, 0, 0.2);
+  
+  /* Typographie */
+  --font-family: 'Arial', sans-serif;
+  --font-size-sm: 0.9rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.2rem;
+  --font-size-xl: 1.5rem;
+  --font-size-xxl: 1.8rem;
+  
+  /* Transitions */
+  --transition: all 0.3s ease;
+} 

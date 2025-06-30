@@ -1,0 +1,36 @@
+/* Reset et styles de base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family);
+  background: linear-gradient(135deg, var(--color-background) 0%, #F0D0A0 100%);
+  color: var(--color-text);
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-size: var(--font-size-base);
+  line-height: 1.6;
+}
+
+/* Styles utilitaires de base */
+.hidden {
+  display: none !important;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* Animations de base */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+} 

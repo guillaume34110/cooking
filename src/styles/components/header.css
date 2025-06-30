@@ -1,0 +1,41 @@
+/* Styles du header */
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-sm) var(--spacing-lg);
+  background: var(--color-surface);
+  box-shadow: var(--shadow);
+  border-bottom: 3px solid var(--color-primary);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.app-title {
+  font-size: var(--font-size-xxl);
+  font-weight: bold;
+  color: var(--color-secondary);
+}
+
+.language-switcher {
+  display: flex;
+  gap: var(--spacing-xs);
+}
+
+.place-holder {
+  width: 20px;
+  height: 10px;
+  display: block;
+}
+
+/* Responsive header */
+@media (max-width: 768px) {
+  .app-header {
+    padding: var(--spacing-sm);
+  }
+
+  .app-title {
+    font-size: var(--font-size-xl);
+  }
+} 

@@ -6,7 +6,10 @@ export type RecipeStep = {
     th: string;
   };
   duration: number;
-  video?: string;
+  media: {
+    type: 'video' | 'image';
+    url: string;
+  };
 };
 
 export type Recipe = {
@@ -19,6 +22,11 @@ export type Recipe = {
     fr: string;
     th: string;
   };
+  ingredients: {
+    fr: string[];
+    th: string[];
+  };
+  image: string; // Image pour la liste des ingrédients
   video: string;
   steps: RecipeStep[];
 };
@@ -35,31 +43,59 @@ const recipes: Recipe[] = [
       fr: 'Une délicieuse crêpe traditionnelle française',
       th: 'เครปแบบดั้งเดิมของฝรั่งเศสที่อร่อย'
     },
-    video: '../public/videos/crepe-classique.mp4',
+    ingredients: {
+      fr: [
+        '250g de farine',
+        '4 œufs',
+        '500ml de lait',
+        '1 pincée de sel',
+        "50g d'huile de coco",
+        'huile pour la cuisson'
+      ],
+      th: [
+        'แป้งสาลี 250 กรัม',
+        'ไข่ไก่ 4 ฟอง',
+        'นม 500 มล.',
+        'เกลือเล็กน้อย',
+        'น้ำมันมะพร้าว 50 กรัม',
+        'น้ำมันสำหรับทอด'
+      ]
+    },
+    image: '/assets/images/ingredientpatecrepe.png',
+    video: '/videos/crepe-classique.mp4',
     steps: [
       {
         text: {
-          fr: 'Mélanger la farine et les œufs dans un bol',
-          th: 'ผสมแป้งและไข่ในชาม'
+          fr: 'Mélanger la farine et les œufs et le lait le sel dans un mixeur',
+          th: 'ผสมแป้ง ไข่ และนมในเครื่องปั่น'
         },
-        duration: 120,
-        video: '../public/videos/mix-ingredients.mp4'
+        duration: 10,
+                  media: {
+            type: 'image',
+            url: '/assets/images/melangemixeur.png'
+          }
       },
       {
         text: {
-          fr: 'Ajouter le lait progressivement en remuant',
-          th: 'เติมนมทีละน้อยแล้วคนให้เข้ากัน'
+          fr: 'mixer',
+          th: 'เปิดเครื่องปั่น'
         },
-        duration: 90,
-        video: '../public/videos/add-milk.mp4'
+        duration: 40,
+        media: {
+          type: 'image',
+          url: '/assets/images/mixermixin.webp'
+        }
       },
       {
         text: {
-          fr: 'Chauffer la poêle et ajouter un peu de beurre',
-          th: 'ตั้งกระทะแล้วใส่เนยนิดหน่อย'
+          fr: "Chauffer la poêle et ajouter un peu d'huile 180-200",
+          th: 'ตั้งกระทะให้ร้อน แล้วใส่น้ำมันเล็กน้อย 180-200'
         },
         duration: 60,
-        video: '../public/videos/heat-pan.mp4'
+        media: {
+          type: 'image',
+          url: '/assets/images/crepeierchaude.png'
+        }
       },
       {
         text: {
@@ -67,7 +103,10 @@ const recipes: Recipe[] = [
           th: 'เทแป้งลงแล้วกระจายให้ทั่ว'
         },
         duration: 45,
-        video: '../public/videos/pour-batter.mp4'
+        media: {
+          type: 'image',
+          url: '/assets/images/crepiereetalage.png'
+        }
       },
       {
         text: {
@@ -75,7 +114,10 @@ const recipes: Recipe[] = [
           th: 'ปิ้ง 2 นาทีแล้วพลิก'
         },
         duration: 120,
-        video: '../public/videos/flip-crepe.mp4'
+        media: {
+          type: 'image',
+          url: '/assets/images/cuisson.png'
+        }
       },
       {
         text: {
@@ -83,107 +125,136 @@ const recipes: Recipe[] = [
           th: 'ปิ้งอีก 1 นาทีแล้วเสิร์ฟ'
         },
         duration: 60,
-        video: '../public/videos/serve-crepe.mp4'
+        media: {
+          type: 'image',
+          url: '/assets/images/cuisson.png'
+        }
       }
     ]
-  },
-  {
-    id: 'crepe-sucree',
+  }, {
+    id: "savon-barre-classique",
     title: {
-      fr: 'Crêpe sucrée',
-      th: 'เครปหวาน'
+      fr: "Savon en barre classique",
+      th: "สบู่ก้อนสูตรมาตรฐาน"
     },
     description: {
-      fr: 'Crêpe avec sucre et garniture sucrée',
-      th: 'เครปใส่น้ำตาลและไส้หวาน'
+      fr: "Savon saponifié à froid à base d’huile de palme, coco, et huiles fluides, enrichi en lait de coco, talc, et huiles essentielles.",
+      th: "สบู่กวนเย็นทำจากน้ำมันปาล์ม น้ำมันมะพร้าว และน้ำมันเหลว เติมน้ำนมมะพร้าว แป้งทัลก์ และน้ำมันหอมระเหย"
     },
-    video: '../public/videos/crepe-sucree.mp4',
+    ingredients: {
+      fr: [
+        "600g d’huile de palme",
+        "150g d’huile de coco",
+        "250g d’huile fluide (tournesol, colza, riz, maïs, soja, coco)",
+        "142g de soude (NaOH)",
+        "325g d’eau (dont 50g à retirer pour la trace)",
+        "30g de lait de coco",
+        "30g de poudre de talc",
+        "80g d’huile essentielle",
+        "3g de poudre colorée (paprika, matcha, charbon – optionnel)"
+      ],
+      th: [
+        "น้ำมันปาล์ม 600 กรัม",
+        "น้ำมันมะพร้าว 150 กรัม",
+        "น้ำมันเหลว 250 กรัม (ดอกทานตะวัน คาโนลา ข้าว ข้าวโพด ถั่วเหลือง มะพร้าว)",
+        "โซดาไฟ 142 กรัม",
+        "น้ำ 325 กรัม (แยกไว้ 50 กรัมสำหรับตอน Trace)",
+        "กะทิ 30 กรัม",
+        "แป้งทัลก์ 30 กรัม",
+        "น้ำมันหอมระเหย 80 กรัม",
+        "ผงสี 3 กรัม (ปาปริกา ชาเขียว ถ่านไม้ – ตามต้องการ)"
+      ]
+    },
+    image: "/assets/images/barsoap.png",
+    video: "/assets/videos/savon-intro.mp4",
     steps: [
       {
         text: {
-          fr: 'Préparer la pâte à crêpe avec du sucre vanillé',
-          th: 'เตรียมแป้งเครปใส่น้ำตาลวานิลา'
-        },
-        duration: 150,
-        video: '../public/videos/sweet-batter.mp4'
-      },
-      {
-        text: {
-          fr: 'Cuire la crêpe comme une crêpe classique',
-          th: 'ทำเครปแบบเดียวกับเครปธรรมดา'
-        },
-        duration: 180,
-        video: '../public/videos/cook-sweet-crepe.mp4'
-      },
-      {
-        text: {
-          fr: 'Ajouter confiture ou chocolat selon le goût',
-          th: 'ใส่แยมหรือช็อกโกแลตตามใจชอบ'
-        },
-        duration: 30,
-        video: '../public/videos/add-toppings.mp4'
-      },
-      {
-        text: {
-          fr: 'Plier et servir chaud',
-          th: 'พับแล้วเสิร์ฟร้อนๆ'
-        },
-        duration: 20,
-        video: '../public/videos/fold-serve.mp4'
-      }
-    ]
-  },
-  {
-    id: 'crepe-salee',
-    title: {
-      fr: 'Crêpe salée',
-      th: 'เครปเค็ม'
-    },
-    description: {
-      fr: 'Galette de sarrasin avec garniture salée',
-      th: 'แกเลตต์เซาร์บลูแอตใส่ไส้เค็ม'
-    },
-    video: '../public/videos/crepe-salee.mp4',
-    steps: [
-      {
-        text: {
-          fr: 'Mélanger farine de sarrasin, œuf et eau salée',
-          th: 'ผสมแป้งเซาร์บลูแอต ไข่ และน้ำเกลือ'
-        },
-        duration: 90,
-        video: '../public/videos/buckwheat-batter.mp4'
-      },
-      {
-        text: {
-          fr: 'Laisser reposer la pâte 30 minutes',
-          th: 'พักแป้ง 30 นาที'
-        },
-        duration: 1800,
-        video: '../public/videos/rest-batter.mp4'
-      },
-      {
-        text: {
-          fr: 'Cuire la galette dans une poêle bien chaude',
-          th: 'ทำแกเลตต์ในกระทะร้อนจัด'
-        },
-        duration: 120,
-        video: '../public/videos/cook-galette.mp4'
-      },
-      {
-        text: {
-          fr: 'Ajouter jambon, fromage et œuf au centre',
-          th: 'ใส่แฮม ชีส และไข่ตรงกลาง'
+          fr: "Peser et mélanger 600g d’huile de palme, 150g d’huile de coco et 250g d’huile fluide dans un grand récipient. Réserver 50g pour la trace.",
+          th: "ชั่งและผสมน้ำมันปาล์ม 600 กรัม น้ำมันมะพร้าว 150 กรัม และน้ำมันเหลว 250 กรัม ในภาชนะขนาดใหญ่ แยกไว้ 50 กรัมสำหรับตอน Trace"
         },
         duration: 60,
-        video: '../public/videos/add-savory-filling.mp4'
+        media: {
+          type: "image",
+          url: "/assets/images/huilesinbowl.png"
+        }
       },
       {
         text: {
-          fr: 'Plier les bords et servir immédiatement',
-          th: 'พับขอบแล้วเสิร์ฟทันที'
+          fr: "Dissoudre 142g de soude dans 325g d’eau. Attention aux vapeurs.",
+          th: "ละลายโซดาไฟ 142 กรัม ในน้ำ 325 กรัม ระวังไอร้อน"
+        },
+        duration: 120,
+        media: {
+          type: "image",
+          url: "/assets/images/soudemix.png"
+        }
+      },
+      {
+        text: {
+          fr: "Mélanger ensemble dans un petit récipient : 50g d’huile réservée, 30g de lait de coco, 30g de talc, 80g d’huile essentielle, et 3g de poudre colorée (facultatif).",
+          th: "ผสมส่วนผสมทั้งหมดในถ้วยเล็ก: น้ำมันที่แยกไว้ 50 กรัม กะทิ 30 กรัม แป้งทัลก์ 30 กรัม น้ำมันหอมระเหย 80 กรัม และผงสี 3 กรัม (ถ้ามี)"
+        },
+        duration: 90,
+        media: {
+          type: "image",
+          url: "/assets/images/tracemix.png"
+        }
+      },
+      {
+        text: {
+          fr: "Laisser refroidir les deux mélanges (huiles et soude diluée) à environ 40°C.",
+          th: "ปล่อยให้น้ำมันและน้ำด่างเย็นลงที่อุณหภูมิประมาณ 40°C"
+        },
+        duration: 600,
+        media: {
+          type: "image",
+          url: "/assets/images/cooldown.png"
+        }
+      },
+      {
+        text: {
+          fr: "Mixer au blender les deux mélanges jusqu'à obtenir la trace (texture crème).",
+          th: "ปั่นน้ำมันและน้ำด่างจนถึงช่วง Trace (เนื้อครีม)"
         },
         duration: 30,
-        video: '../public/videos/fold-galette.mp4'
+        media: {
+          type: "image",
+          url: "/assets/images/mixsoap.png"
+        }
+      },
+      {
+        text: {
+          fr: "Ajouter les ingrédients de finition : 50g d’huile réservée, 30g de lait de coco, 30g de talc, 80g d’huile essentielle, et 3g de poudre colorée (facultatif).",
+          th: "เติมน้ำมันที่แยกไว้ 50 กรัม กะทิ 30 กรัม แป้งทัลก์ 30 กรัม น้ำมันหอมระเหย 80 กรัม และผงสี 3 กรัม (ถ้ามี)"
+        },
+        duration: 60,
+        media: {
+          type: "image",
+          url: "/assets/images/finalmix.png"
+        }
+      },
+      {
+        text: {
+          fr: "Verser la pâte dans un moule rectangulaire propre.",
+          th: "เทส่วนผสมลงในพิมพ์สี่เหลี่ยมที่สะอาด"
+        },
+        duration: 30,
+        media: {
+          type: "image",
+          url: "/assets/images/moulesavon.png"
+        }
+      },
+      {
+        text: {
+          fr: "Nettoyer tous les ustensiles à l’eau.",
+          th: "ล้างอุปกรณ์ทั้งหมดด้วยน้ำสะอาด"
+        },
+        duration: 60,
+        media: {
+          type: "image",
+          url: "/assets/images/nettoyagesavon.png"
+        }
       }
     ]
   }
@@ -204,6 +275,7 @@ export const getLocalizedRecipe = (recipe: Recipe) => {
     ...recipe,
     title: recipe.title[language] || recipe.title.fr,
     description: recipe.description[language] || recipe.description.fr,
+    ingredients: recipe.ingredients[language] || recipe.ingredients.fr,
     steps: recipe.steps.map(step => ({
       ...step,
       text: step.text[language] || step.text.fr

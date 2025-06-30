@@ -8,7 +8,7 @@ import {
   addNewSlot,
   startRecipeInSlot,
   resetSlot,
-  hasActiveSlots
+  startCookingFromIngredients
 } from '../state/appState.js';
 import { 
   renderSlot, 
@@ -86,16 +86,24 @@ const handleSlotClick = (e: Event): void => {
     return;
   }
   
-  // Gestion des boutons de contrôle
-  const action = target.dataset.action;
-  const slotId = target.dataset.slot;
+  // Rechercher l'élément avec data-action dans l'arbre DOM (remonte jusqu'à trouver un bouton)
+  const actionElement = target.closest('[data-action]') as HTMLElement;
+  if (!actionElement) return;
+  
+  const action = actionElement.dataset.action;
+  const slotId = actionElement.dataset.slot;
   
   if (!action || !slotId) return;
+  
+  // Empêcher l'action si le bouton est désactivé
+  if (actionElement.hasAttribute('disabled')) return;
   
   handleSlotAction(slotId, action);
 };
 
 const handleSlotAction = (slotId: string, action: string): void => {
+  console.log(`🎯 Action détectée: ${action} sur slot ${slotId}`);
+  
   switch (action) {
     case 'start':
       startTimer(slotId);
@@ -115,7 +123,19 @@ const handleSlotAction = (slotId: string, action: string): void => {
     case 'close':
       closeRecipe(slotId);
       break;
+    case 'start-cooking':
+      handleStartCooking(slotId);
+      break;
+    default:
+      console.warn(`⚠️ Action inconnue: ${action}`);
   }
+};
+
+const handleStartCooking = (slotId: string): void => {
+  startCookingFromIngredients(slotId);
+  renderSlot(slotId);
+  // Auto-start du timer pour la première étape
+  window.setTimeout(() => startTimer(slotId), 500);
 };
 
 const closeRecipe = (slotId: string): void => {
@@ -131,19 +151,22 @@ const bindModalEvents = (): void => {
 };
 
 const bindRecipeSelection = (): void => {
-  const recipeOptions = document.querySelectorAll('.recipe-option');
+  const wheelContainer = document.querySelector('.wheel-container');
+  if (!wheelContainer) return;
   
-  recipeOptions.forEach(option => {
-    option.addEventListener('click', (e) => {
-      const target = e.currentTarget as HTMLElement;
-      const recipeId = target.dataset.recipe;
-      
-      if (!recipeId) return;
-      
-      clearRecipeSelection();
-      target.classList.add('selected');
-      setSelectedRecipe(recipeId);
-    });
+  // Utiliser la délégation d'événements pour gérer les clics sur les options générées dynamiquement
+  wheelContainer.addEventListener('click', (e) => {
+    const target = e.target as HTMLElement;
+    const recipeOption = target.closest('.recipe-option') as HTMLElement;
+    
+    if (!recipeOption) return;
+    
+    const recipeId = recipeOption.dataset.recipe;
+    if (!recipeId) return;
+    
+    clearRecipeSelection();
+    recipeOption.classList.add('selected');
+    setSelectedRecipe(recipeId);
   });
 };
 
@@ -183,7 +206,7 @@ const bindAddSlotButton = (): void => {
   const addBtn = document.getElementById('add-slot-btn');
   
   addBtn?.addEventListener('click', () => {
-    const newSlotId = addNewSlot();
+    addNewSlot();
     renderAllSlots();
   });
 };

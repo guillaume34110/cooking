@@ -1,0 +1,133 @@
+/* Styles de la recette active */
+.recipe-media {
+  width: 100%;
+  max-height: 200px;
+  border-radius: var(--border-radius);
+  margin-bottom: var(--spacing-sm);
+  object-fit: cover;
+  box-shadow: var(--shadow);
+  position: relative;
+}
+
+.recipe-video {
+  /* Styles spécifiques aux vidéos */
+}
+
+.recipe-image {
+  /* Styles spécifiques aux images */
+  transition: var(--transition);
+  cursor: pointer;
+}
+
+.recipe-image:hover {
+  transform: scale(1.02);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Indicateur de type de média */
+.recipe-media::after {
+  content: '';
+  position: absolute;
+  top: var(--spacing-xs);
+  right: var(--spacing-xs);
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  color: white;
+  z-index: 10;
+}
+
+.recipe-video::after {
+  content: '▶️';
+}
+
+.recipe-image::after {
+  content: '🖼️';
+}
+
+.step-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.step-text {
+  font-size: var(--font-size-lg);
+  line-height: 1.6;
+  margin-bottom: var(--spacing-sm);
+  color: var(--color-text);
+  background: rgba(255, 248, 220, 0.7);
+  padding: var(--spacing-sm);
+  border-radius: var(--border-radius);
+  border-left: 4px solid var(--color-primary);
+}
+
+/* Section timer */
+.timer-section {
+  margin: var(--spacing-sm) 0;
+}
+
+.timer-display {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--color-background);
+  padding: var(--spacing-sm);
+  border-radius: var(--border-radius);
+  margin-bottom: var(--spacing-xs);
+  border: 2px solid var(--color-accent);
+}
+
+.timer-text {
+  font-size: var(--font-size-lg);
+  font-weight: bold;
+  color: var(--color-secondary);
+}
+
+/* Barre de progression du timer */
+.timer-progress {
+  width: 100%;
+  height: 8px;
+  background: var(--color-background);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: var(--spacing-xs);
+}
+
+.timer-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+  width: 0%;
+  transition: width 0.1s linear;
+  border-radius: 4px;
+}
+
+.timer-progress-bar.ending {
+  background: linear-gradient(90deg, var(--color-warning), var(--color-danger));
+  animation: pulse 0.5s infinite;
+}
+
+/* Navigation des étapes - voir navigation.css */
+
+/* Responsive recipe */
+@media (max-width: 768px) {
+  .timer-display {
+    flex-direction: column;
+    gap: var(--spacing-xs);
+  }
+  
+  .recipe-media {
+    max-height: 150px;
+  }
+  
+  .recipe-media::after {
+    width: 20px;
+    height: 20px;
+    font-size: 10px;
+  }
+} 

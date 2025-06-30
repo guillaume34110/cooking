@@ -10,11 +10,12 @@
   <div id="app">
     <!-- Header avec sélecteur de langue -->
     <header class="app-header">
-      <h1 class="app-title">🥞 Cooking App</h1>
+      <h1 class="app-title">🥞 </h1>
       <div class="language-switcher">
         <button id="lang-fr" class="lang-btn active" data-lang="fr">FR</button>
-        <button id="lang-th" class="lang-btn" data-lang="th">TH</button>
+        <button id="lang-th" class="lang-btn" data-lang="th">ไทย</button>
       </div>
+      <div class="place-holder"> </div>
     </header>
 
     <!-- Container principal des slots -->
@@ -44,15 +45,7 @@
         </div>
         <div class="recipe-wheel">
           <div class="wheel-container">
-            <div class="recipe-option" data-recipe="crepe-classique">
-              <span data-i18n="crepe-classique-title">Crêpe classique</span>
-            </div>
-            <div class="recipe-option" data-recipe="crepe-sucree">
-              <span data-i18n="crepe-sucree-title">Crêpe sucrée</span>
-            </div>
-            <div class="recipe-option" data-recipe="crepe-salee">
-              <span data-i18n="crepe-salee-title">Crêpe salée</span>
-            </div>
+            <!-- Les options de recettes seront générées dynamiquement -->
           </div>
         </div>
         <div class="modal-footer">

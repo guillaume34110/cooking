@@ -1,6 +1,6 @@
 import { bindAllEvents } from '../ui/events.js';
 import { renderInitialState } from '../ui/render.js';
-import { loadTranslations } from './translations.js';
+import { loadTranslations, updatePageMetadata } from './translations.js';
 
 export const initializeApp = (): void => {
   console.log('⚡ Initialisation de l\'application...');
@@ -18,6 +18,7 @@ const setupInitialState = (): void => {
 const loadInitialTranslations = (): void => {
   console.log('🌐 Chargement des traductions...');
   loadTranslations();
+  updatePageMetadata();
 };
 
 const bindAllEventHandlers = (): void => {

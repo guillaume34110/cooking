@@ -1,6 +1,6 @@
 import { getSlotById, updateSlot } from '../state/appState.js';
 import { getRecipeById } from '../recipes/recipeLoader.js';
-import { renderSlot, renderTimerProgress, renderTimerControls } from '../ui/render.js';
+import { renderSlot, renderTimerProgress, renderTimerControls, animateStepChange } from '../ui/render.js';
 
 const activeTimers = new Map<string, number>();
 
@@ -62,6 +62,7 @@ export const resetTimer = (slotId: string): void => {
 };
 
 export const goToNextStep = (slotId: string): void => {
+  console.log(`🔄 Navigation vers étape suivante pour slot ${slotId}`);
   const slot = getSlotById(slotId);
   if (!slot || slot.isEmpty) return;
   
@@ -69,7 +70,10 @@ export const goToNextStep = (slotId: string): void => {
   if (!recipe) return;
   
   const nextStepIndex = slot.currentStepIndex + 1;
-  if (nextStepIndex >= recipe.steps.length) return;
+  if (nextStepIndex >= recipe.steps.length) {
+    console.log(`⚠️ Déjà à la dernière étape (${slot.currentStepIndex + 1}/${recipe.steps.length})`);
+    return;
+  }
   
   stopTimerInterval(slotId);
   
@@ -83,14 +87,21 @@ export const goToNextStep = (slotId: string): void => {
   });
   
   renderSlot(slotId);
+  animateStepChange(slotId);
   
   // Auto-start du timer pour l'étape suivante
   window.setTimeout(() => startTimer(slotId), 500);
 };
 
 export const goToPreviousStep = (slotId: string): void => {
+  console.log(`🔄 Navigation vers étape précédente pour slot ${slotId}`);
   const slot = getSlotById(slotId);
-  if (!slot || slot.isEmpty || slot.currentStepIndex === 0) return;
+  if (!slot || slot.isEmpty) return;
+  
+  if (slot.currentStepIndex === 0) {
+    console.log(`⚠️ Déjà à la première étape`);
+    return;
+  }
   
   stopTimerInterval(slotId);
   
@@ -104,6 +115,7 @@ export const goToPreviousStep = (slotId: string): void => {
   });
   
   renderSlot(slotId);
+  animateStepChange(slotId);
 };
 
 const startTimerInterval = (slotId: string, duration: number): void => {

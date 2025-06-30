@@ -10,6 +10,7 @@ export type SlotState = {
   timerProgress: number;
   startTime?: number;
   pausedTime?: number;
+  showingIngredients: boolean; // Nouvelle propriété pour l'étape ingrédients
 };
 
 export type AppState = {
@@ -30,7 +31,8 @@ const initialState: AppState = {
       currentStepIndex: 0,
       isRunning: false,
       isPaused: false,
-      timerProgress: 0
+      timerProgress: 0,
+      showingIngredients: false
     }
   ],
   isModalOpen: false
@@ -85,7 +87,8 @@ export const addNewSlot = (): string => {
     currentStepIndex: 0,
     isRunning: false,
     isPaused: false,
-    timerProgress: 0
+    timerProgress: 0,
+    showingIngredients: false
   };
   
   currentState = {
@@ -119,6 +122,17 @@ export const startRecipeInSlot = (slotId: string, recipeId: string): void => {
     currentStepIndex: 0,
     isRunning: false,
     isPaused: false,
+    timerProgress: 0,
+    showingIngredients: true // Démarrer par l'étape ingrédients
+  });
+};
+
+export const startCookingFromIngredients = (slotId: string): void => {
+  updateSlot(slotId, {
+    showingIngredients: false,
+    currentStepIndex: 0,
+    isRunning: false,
+    isPaused: false,
     timerProgress: 0
   });
 };
@@ -132,6 +146,7 @@ export const resetSlot = (slotId: string): void => {
     isPaused: false,
     timerProgress: 0,
     startTime: undefined,
-    pausedTime: undefined
+    pausedTime: undefined,
+    showingIngredients: false
   });
 }; 

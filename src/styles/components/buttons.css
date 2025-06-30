@@ -1,0 +1,115 @@
+/* Styles des boutons */
+.btn {
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-size: var(--font-size-base);
+  transition: var(--transition);
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+}
+
+.btn-primary {
+  background: var(--color-primary);
+  color: white;
+}
+
+.btn-primary:hover {
+  background: var(--color-secondary);
+}
+
+.btn-secondary {
+  background: var(--color-accent);
+  color: white;
+  border: 2px solid var(--color-secondary);
+}
+
+.btn-secondary:hover {
+  background: var(--color-secondary);
+}
+
+.btn-success {
+  background: var(--color-success);
+  color: white;
+}
+
+.btn-warning {
+  background: var(--color-warning);
+  color: var(--color-text);
+}
+
+.btn-danger {
+  background: var(--color-danger);
+  color: white;
+}
+
+/* Bouton d'ajout de slot */
+.add-slot-btn {
+  position: fixed;
+  top: var(--spacing-xxs);
+  right: var(--spacing-xxs);
+  width: 60px;
+  height: 60px;
+  background: var(--color-primary);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 2rem;
+  cursor: pointer;
+  box-shadow: var(--shadow-lg);
+  transition: var(--transition);
+  z-index: 1000;
+}
+
+.add-slot-btn:hover {
+  transform: scale(1.1);
+  background: var(--color-secondary);
+}
+
+/* Bouton de fermeture de recette */
+.close-recipe-btn {
+  background: var(--color-danger);
+  color: white;
+  border: none;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-size: var(--font-size-base);
+}
+
+/* Contrôles de timer */
+.timer-controls {
+  display: flex;
+  gap: var(--spacing-xs);
+  justify-content: center;
+}
+
+.timer-controls .btn {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  font-size: var(--font-size-sm);
+}
+
+/* Boutons de langue */
+.lang-btn {
+  padding: var(--spacing-xxs) var(--spacing-xs);
+  background: var(--color-background);
+  border: 2px solid var(--color-accent);
+  border-radius: var(--border-radius);
+  color: var(--color-text);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.lang-btn.active,
+.lang-btn:hover {
+  background: var(--color-primary);
+  color: white;
+}
+
+/* Support spécial pour les caractères thaïlandais */
+.lang-btn[data-lang="th"] {
+  font-family: 'Arial Unicode MS', Arial, sans-serif;
+  line-height: 1;
+} 

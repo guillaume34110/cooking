@@ -21,7 +21,10 @@ export type TranslationKey =
   | 'minutes'
   | 'seconds'
   | 'finished'
-  | 'timer-ended';
+  | 'timer-ended'
+  | 'ingredients'
+  | 'start-cooking'
+  | 'app-title';
 
 type Translations = {
   [key in TranslationKey]: {
@@ -114,6 +117,18 @@ const translations: Translations = {
   'timer-ended': {
     fr: 'Temps écoulé !',
     th: 'หมดเวลาแล้ว!'
+  },
+  'ingredients': {
+    fr: 'Ingrédients',
+    th: 'ส่วนผสม'
+  },
+  'start-cooking': {
+    fr: 'Commencer la cuisine',
+    th: 'เริ่มทำอาหาร'
+  },
+  'app-title': {
+    fr: 'Cooking App - Recettes de Crêpes',
+    th: 'แอปทำอาหาร - สูตรเครป'
   }
 };
 
@@ -135,4 +150,17 @@ export const updatePageTranslations = (): void => {
       element.textContent = getTranslation(key);
     }
   });
+  
+  // Mettre à jour le titre de la page et l'attribut lang
+  updatePageMetadata();
+};
+
+export const updatePageMetadata = (): void => {
+  const language = getLanguage();
+  
+  // Mettre à jour l'attribut lang du document
+  document.documentElement.lang = language;
+  
+  // Mettre à jour le titre de la page
+  document.title = getTranslation('app-title');
 }; 
